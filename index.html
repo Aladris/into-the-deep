@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#04121f" />
+    <meta name="description" content="Scroll down to descend from the sea surface to the bottom of the Mariana Trench." />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Into the Deep" />
+    <title>Into the Deep — Ocean Depth Explorer</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  </head>
+  <body>
+    <!-- Fixed water column: gradient repainted via CSS vars as you scroll -->
+    <div id="water" aria-hidden="true"></div>
+    <!-- Sun rays overlay, fades out with depth -->
+    <div id="sunrays" aria-hidden="true"></div>
+    <!-- Bioluminescent specks, fade in from ~900 m; layers drift at different parallax speeds -->
+    <div id="biolum" aria-hidden="true">
+      <span class="biolum-layer biolum-a"></span>
+      <span class="biolum-layer biolum-b"></span>
+      <span class="biolum-layer biolum-c"></span>
+    </div>
+    <!-- Zone transition callout -->
+    <div id="zone-toast" role="status" aria-live="polite">
+      <span class="zt-kicker">now entering</span>
+      <span class="zt-title"></span>
+      <span class="zt-sub"></span>
+    </div>
+
+    <!-- Instrument panel (dive computer) -->
+    <header id="hud" role="status" aria-live="off">
+      <div class="hud-cell hud-depth">
+        <span class="hud-label">Depth</span>
+        <span class="hud-value"><span id="hud-depth">0</span><span class="hud-unit">m</span></span>
+      </div>
+      <div class="hud-cell hud-zone">
+        <span class="hud-label">Zone</span>
+        <span class="hud-value" id="hud-zone">Sunlight</span>
+        <span class="hud-sub" id="hud-zone-sci">Epipelagic</span>
+      </div>
+      <div class="hud-cell hud-light">
+        <span class="hud-label">Light</span>
+        <span class="hud-value" id="hud-light">100%</span>
+        <span class="light-meter"><span id="hud-light-bar"></span></span>
+      </div>
+      <div class="hud-cell hud-pressure">
+        <span class="hud-label">Pressure</span>
+        <span class="hud-value"><span id="hud-pressure">1</span><span class="hud-unit">atm</span></span>
+      </div>
+    </header>
+
+    <!-- The scrollable ocean: everything below is positioned by real depth -->
+    <main id="ocean">
+      <section id="intro">
+        <p class="intro-kicker">Research Dive · Log 001</p>
+        <h1>Into<br />the Deep</h1>
+        <p class="intro-sub">
+          Scroll to descend from the surface to the bottom of the
+          Mariana&nbsp;Trench — <strong>10,935&nbsp;m</strong> straight down.
+        </p>
+        <div class="scroll-cue" aria-hidden="true">
+          <span>dive</span>
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 8l8 8 8-8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </section>
+      <!-- zone markers, ruler + creatures injected by main.js -->
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

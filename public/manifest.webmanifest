@@ -1,0 +1,16 @@
+{
+  "name": "Into the Deep — Ocean Depth Explorer",
+  "short_name": "Into the Deep",
+  "description": "Scroll down to descend from the sea surface to the bottom of the Mariana Trench, meeting real deep-sea creatures along the way.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#04121f",
+  "theme_color": "#04121f",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
