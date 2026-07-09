@@ -4,11 +4,19 @@ A mobile-first, scroll-driven ocean depth explorer. Scroll down to descend
 from the sea surface to the floor of the Mariana Trench (10,935 m), watching
 depth, light, pressure, and water colour change in real time.
 
+**Live: <https://aladris.github.io/into-the-deep/>**
+
 ## Run it
 
 ```sh
 npm install
 npm run dev
+```
+
+## Deploy
+
+```sh
+npm run deploy   # builds and pushes dist/ to the gh-pages branch
 ```
 
 ## How the depth engine works
