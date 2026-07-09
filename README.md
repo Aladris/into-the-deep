@@ -35,7 +35,7 @@ npm run deploy   # builds and pushes dist/ to the gh-pages branch
 
 - [x] **Stage 1** — scaffold, scroll-driven depth/light/gradient engine, HUD,
   zone boundary markers, depth ruler, 3 placeholder creatures
-- [x] **Stage 2** — full creature dataset (20 species) + full-screen detail view
+- [x] **Stage 2** — full creature dataset (50 species) + full-screen detail view
 - [x] **Stage 3** — bioluminescence particles (from ~900 m) + zone-transition
   callouts + glow halos on deep-zone creatures
 - [x] **Stage 4** — installable PWA: manifest + icons, service worker

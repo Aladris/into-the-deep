@@ -1,2 +1,7 @@
 node_modules/
 dist/
+
+# work-in-progress: real-photo mode (not ready to commit yet)
+public/photos/
+scripts/fetch-photos.mjs
+scripts/photo-report.json
