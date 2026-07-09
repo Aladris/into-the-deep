@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#38acd8"/>
+      <stop offset="0.28" stop-color="#0a528e"/>
+      <stop offset="0.6" stop-color="#071232"/>
+      <stop offset="1" stop-color="#010208"/>
+    </linearGradient>
+    <radialGradient id="lure" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fdffd8"/>
+      <stop offset="0.3" stop-color="#b8f3a8"/>
+      <stop offset="1" stop-color="#b8f3a8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#sea)"/>
+  <!-- surface waves -->
+  <path d="M0 74 Q42 58 84 74 T168 74 T252 74 T336 74 T420 74 T504 74 L512 74" fill="none" stroke="#bfeaf8" stroke-width="12" stroke-linecap="round" opacity="0.9"/>
+  <!-- bioluminescent specks -->
+  <g fill="#8fe9ff">
+    <circle cx="118" cy="258" r="5" opacity="0.85"/>
+    <circle cx="392" cy="230" r="4" opacity="0.7"/>
+    <circle cx="330" cy="330" r="5" opacity="0.75"/>
+    <circle cx="150" cy="392" r="4" opacity="0.6"/>
+    <circle cx="404" cy="428" r="4" opacity="0.55" fill="#cbb2ff"/>
+    <circle cx="88" cy="322" r="3.5" opacity="0.5" fill="#a8f5c0"/>
+  </g>
+  <!-- the lure -->
+  <circle cx="256" cy="330" r="130" fill="url(#lure)"/>
+  <circle cx="256" cy="330" r="26" fill="#f4ffc4"/>
+  <!-- descent ticks down the left, like the depth ruler -->
+  <g stroke="#e8f6ff" stroke-width="10" stroke-linecap="round" opacity="0.8">
+    <path d="M52 140 h44"/>
+    <path d="M52 208 h28"/>
+    <path d="M52 276 h44"/>
+    <path d="M52 344 h28"/>
+    <path d="M52 412 h44"/>
+  </g>
+</svg>
