@@ -187,6 +187,94 @@ detailEls.card.addEventListener('touchend', (e) => {
   touchStartY = null;
 }, { passive: true });
 
+// ——— Dive line: a rope of every creature you can tap to jump to ———
+
+const diveToggle = document.createElement('button');
+diveToggle.id = 'divemap-toggle';
+diveToggle.type = 'button';
+diveToggle.setAttribute('aria-label', 'Open the dive line to jump to a creature');
+diveToggle.innerHTML = `
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+    <path d="M12 2 V22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="7" cy="6" r="2.4" fill="currentColor"/>
+    <circle cx="17" cy="11" r="2.4" fill="currentColor"/>
+    <circle cx="7" cy="16" r="2.4" fill="currentColor"/>
+  </svg>
+  <span>DIVE<br/>LINE</span>`;
+document.body.appendChild(diveToggle);
+
+const divemap = document.createElement('div');
+divemap.id = 'divemap';
+divemap.hidden = true;
+divemap.innerHTML = `
+  <div class="divemap-scrim" data-close></div>
+  <aside class="divemap-panel" role="dialog" aria-modal="true" aria-label="Dive line">
+    <header class="divemap-head">
+      <div>
+        <span class="divemap-kicker">Dive Line</span>
+        <h2>Jump to a creature</h2>
+      </div>
+      <button class="divemap-close" type="button" data-close aria-label="Close">&times;</button>
+    </header>
+    <div class="divemap-rope"><div class="divemap-track"></div></div>
+  </aside>`;
+document.body.appendChild(divemap);
+
+const track = divemap.querySelector('.divemap-track');
+let mapZone = null;
+for (const c of CREATURES) {
+  const z = zoneAt(c.depth);
+  if (z.name !== mapZone) {
+    mapZone = z.name;
+    const band = document.createElement('div');
+    band.className = 'divemap-zone';
+    band.dataset.zone = z.name.toLowerCase();
+    const to = z.to >= 11000 ? '10,935' : z.to.toLocaleString('en-US');
+    band.innerHTML = `<span>${z.name} · ${z.from.toLocaleString('en-US')}–${to} m</span>`;
+    track.appendChild(band);
+  }
+  const item = document.createElement('button');
+  item.type = 'button';
+  item.className = 'divemap-item';
+  item.dataset.side = c.side;
+  item.setAttribute('aria-label', `Jump to ${c.name} at ${Math.round(c.depth)} metres`);
+  item.innerHTML = `
+    <span class="dm-chip">
+      <span class="dm-node">${c.svg}</span>
+      <span class="dm-label"><b>${c.name}</b><i>${Math.round(c.depth).toLocaleString('en-US')} m</i></span>
+    </span>`;
+  item.addEventListener('click', () => jumpTo(c));
+  track.appendChild(item);
+}
+
+function openMap() {
+  divemap.hidden = false;
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => divemap.classList.add('open'));
+}
+function closeMap() {
+  divemap.classList.remove('open');
+  document.body.style.overflow = '';
+  const done = () => {
+    divemap.hidden = true;
+    divemap.removeEventListener('transitionend', done);
+  };
+  divemap.addEventListener('transitionend', done);
+}
+function jumpTo(c) {
+  closeMap();
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: Math.round(c.depth * PX_PER_M), behavior: reduce ? 'auto' : 'smooth' });
+}
+
+diveToggle.addEventListener('click', openMap);
+divemap.addEventListener('click', (e) => {
+  if (e.target.hasAttribute('data-close')) closeMap();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !divemap.hidden) closeMap();
+});
+
 // Trench floor
 const floor = document.createElement('div');
 floor.id = 'floor';

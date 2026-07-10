@@ -764,9 +764,271 @@ body {
   margin: 0;
 }
 
+/* ——— Dive line (jump-to-creature rope) ——— */
+
+#divemap-toggle {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 55;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 8px 13px;
+  border: 1px solid var(--panel-line);
+  border-right: none;
+  border-radius: 16px 0 0 16px;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: -4px 0 24px rgba(0, 6, 12, 0.28);
+  transition: padding-right 0.2s ease, color 0.2s ease;
+}
+
+#divemap-toggle:hover { padding-right: 12px; color: #a8ecff; }
+#divemap-toggle:active { transform: translateY(-50%) scale(0.96); }
+
+#divemap {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+}
+#divemap[hidden] { display: none; }
+
+.divemap-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 8, 16, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+#divemap.open .divemap-scrim { opacity: 1; }
+
+.divemap-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(400px, 92vw);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #0a2438 0%, #061625 45%, #02090f 100%);
+  border-left: 1px solid var(--panel-line);
+  box-shadow: -18px 0 60px rgba(0, 4, 10, 0.55);
+  transform: translateX(100%);
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#divemap.open .divemap-panel { transform: translateX(0); }
+
+.divemap-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: max(16px, env(safe-area-inset-top)) 18px 12px;
+  border-bottom: 1px solid var(--panel-line);
+}
+
+.divemap-kicker {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.divemap-head h2 {
+  margin: 4px 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.divemap-close {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--panel-line);
+  background: rgba(4, 14, 24, 0.6);
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.divemap-close:hover { background: rgba(20, 40, 60, 0.85); }
+
+.divemap-rope {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.divemap-track {
+  position: relative;
+  padding: 14px 0 60px;
+}
+
+/* the rope itself, twisted strands running down the centre */
+.divemap-track::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 30px;
+  left: 50%;
+  width: 7px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    135deg,
+    #a6814d 0 3px,
+    #6f5230 3px 6px
+  );
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.45);
+}
+
+/* a weight/anchor knot at the bottom of the rope */
+.divemap-track::after {
+  content: '';
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%) rotate(45deg);
+  background: #6f5230;
+  border: 2px solid #a6814d;
+  border-radius: 3px;
+}
+
+.divemap-zone {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin: 16px 0 8px;
+}
+.divemap-zone:first-child { margin-top: 4px; }
+
+.divemap-zone span {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid var(--panel-line);
+  border-radius: 999px;
+  background: #06131f;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.divemap-zone[data-zone='sunlight'] span { color: #7fd0ff; border-color: rgba(127, 208, 255, 0.4); }
+.divemap-zone[data-zone='twilight'] span { color: #8fb6ff; border-color: rgba(143, 182, 255, 0.4); }
+.divemap-zone[data-zone='midnight'] span { color: #b79cff; border-color: rgba(183, 156, 255, 0.4); }
+.divemap-zone[data-zone='abyssal']  span { color: #8fa8c8; border-color: rgba(143, 168, 200, 0.4); }
+.divemap-zone[data-zone='hadal']    span { color: #7f93b8; border-color: rgba(127, 147, 184, 0.4); }
+
+/* each creature clipped to the rope, alternating sides */
+.divemap-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  width: 100%;
+  padding: 3px 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+/* the connector line from the rope out to each chip */
+.divemap-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.22);
+}
+.divemap-item[data-side='left']  { padding-right: 50%; }
+.divemap-item[data-side='right'] { padding-left: 50%; }
+.divemap-item[data-side='left']::after  { right: 50%; }
+.divemap-item[data-side='right']::after { left: 50%; }
+
+.dm-chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-width: 0;
+}
+.divemap-item[data-side='left'] .dm-chip {
+  flex-direction: row-reverse;
+  text-align: right;
+  padding-right: 18px;
+}
+.divemap-item[data-side='right'] .dm-chip { padding-left: 18px; }
+
+.dm-node {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--panel-line);
+  box-shadow: 0 2px 8px rgba(0, 4, 10, 0.4);
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.dm-node svg { width: 34px; height: 34px; }
+
+.divemap-item:hover .dm-node,
+.divemap-item:focus-visible .dm-node {
+  transform: scale(1.12);
+  border-color: var(--accent);
+}
+.divemap-item:focus-visible { outline: none; }
+
+.dm-label { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.dm-label b {
+  font-size: 12.5px;
+  font-weight: 640;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dm-label i {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+}
+
 @media (prefers-reduced-motion: reduce) {
   #sunrays, .scroll-cue, .creature-sprite, .lure-glow, .detail-sprite,
   .biolum-layer, .creature.deep::before { animation: none; }
   .creature { transition: opacity 0.4s ease; translate: 0 0; }
   .detail-card { transition: transform 0.2s ease; }
+  .divemap-panel { transition: transform 0.2s ease; }
 }
