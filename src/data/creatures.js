@@ -1,9 +1,9 @@
-// Full creature roster (50 species). `depth` places the card on the scroll
+// Full creature roster (100 species). `depth` places the card on the scroll
 // (always within the species' real range); `size` is the sprite's rendered
 // width in px, chosen so creatures feel roughly to scale relative to each
-// other. `side` strictly alternates down the column so neighbouring cards sit
-// on opposite sides and don't collide. Every gradient id is prefixed with the
-// creature id so the inline SVGs don't clash when injected into one DOM.
+// other. Species may be listed in any order — main.js sorts by depth and
+// assigns alternating sides. Every gradient id is prefixed with the creature
+// id so the inline SVGs don't clash when injected into one DOM.
 
 export const CREATURES = [
   // ═══════════════════ SUNLIGHT · 0–200 m ═══════════════════
@@ -75,7 +75,7 @@ export const CREATURES = [
     id: 'moon-jelly',
     name: 'Moon Jelly',
     sci: 'Aurelia aurita',
-    depth: 70,
+    depth: 64,
     range: '0–1,000 m',
     size: 118,
     side: 'left',
@@ -365,7 +365,7 @@ export const CREATURES = [
     id: 'bristlemouth',
     name: 'Bristlemouth',
     sci: 'Cyclothone',
-    depth: 760,
+    depth: 745,
     range: '300–2,000 m',
     size: 88,
     side: 'left',
@@ -1041,6 +1041,943 @@ export const CREATURES = [
         <path d="M70 12 Q104 14 118 44 Q132 70 116 98 Q98 124 66 122 Q34 122 18 96 Q6 70 20 44 Q36 12 70 12Z" fill="url(#xe-b)" stroke="#5f4e2c" stroke-width="2"/>
         <path d="M70 16 Q70 60 66 122 M28 40 Q70 66 116 52 M22 88 Q68 70 114 92 M42 22 Q60 66 40 116 M100 22 Q78 66 102 114" stroke="#6f5c34" stroke-width="1.4" fill="none" opacity="0.65"/>
         <circle cx="54" cy="52" r="3" fill="#5f4e2c" opacity="0.5"/><circle cx="86" cy="70" r="3" fill="#5f4e2c" opacity="0.5"/><circle cx="66" cy="94" r="3" fill="#5f4e2c" opacity="0.5"/>
+      </svg>`,
+  },
+
+  // ═══════════════════ + 50 MORE ═══════════════════
+  // Sunlight
+  {
+    id: 'cuttlefish',
+    name: 'Common Cuttlefish',
+    sci: 'Sepia officinalis',
+    depth: 80,
+    range: '0–200 m',
+    size: 120,
+    fact: 'A master of disguise that changes the colour and texture of its skin in a blink using millions of tiny pigment sacs — even though, strangely, it is probably colour-blind. It has three hearts and blue-green blood.',
+    svg: `
+      <svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cuttlefish">
+        <defs><linearGradient id="ct-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8a878"/><stop offset="1" stop-color="#8a6a44"/></linearGradient></defs>
+        <ellipse cx="82" cy="50" rx="52" ry="30" fill="url(#ct-b)" stroke="#4e3a20" stroke-width="2"/>
+        <path d="M34 26 Q82 16 132 26 Q140 30 132 34 Q82 26 34 34 Q28 30 34 26Z" fill="#e0c48c" opacity="0.7"/>
+        <path d="M30 50 Q10 46 8 50 Q10 54 30 50Z" fill="#a6845a" stroke="#4e3a20" stroke-width="1.4"/>
+        <g stroke="#a6845a" stroke-width="4" stroke-linecap="round"><path d="M34 56 L16 64"/><path d="M36 60 L20 72"/><path d="M40 64 L28 80"/></g>
+        <path d="M34 72 Q60 76 60 84 M60 84 Q58 92 52 96" stroke="#8a6a44" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M40 32 Q82 44 128 32 M40 68 Q82 58 128 68" stroke="#5e4628" stroke-width="1.3" fill="none" opacity="0.5"/>
+        <ellipse cx="44" cy="44" rx="7" ry="6" fill="#f2ead2"/><path d="M40 44 Q44 40 48 44 Q44 48 40 44Z" fill="#1a140a"/>
+      </svg>`,
+  },
+
+  // Twilight
+  {
+    id: 'hammerhead',
+    name: 'Great Hammerhead',
+    sci: 'Sphyrna mokarran',
+    depth: 230,
+    range: '0–300 m',
+    size: 220,
+    fact: 'Its wide, flattened head is studded with sensors that detect the faint electric fields of animals buried in the sand — sweeping it like a metal detector to pin stingrays it then eats.',
+    svg: `
+      <svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Great hammerhead shark">
+        <defs><linearGradient id="hm-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0.5" stop-color="#8a9aa4"/><stop offset="0.52" stop-color="#d6dde1"/><stop offset="1" stop-color="#eef2f4"/></linearGradient></defs>
+        <path d="M40 56 Q120 42 190 52 Q214 56 232 48 Q222 62 218 64 Q224 74 220 84 Q200 70 184 66 Q120 76 46 66 Q34 62 40 56Z" fill="url(#hm-b)" stroke="#4c5860" stroke-width="2"/>
+        <path d="M40 50 Q30 40 30 34 Q40 34 46 46 Q60 44 60 56 Q46 66 32 66 Q22 66 24 58 Q34 58 40 50Z" fill="url(#hm-b)" stroke="#4c5860" stroke-width="2"/>
+        <path d="M120 42 Q128 14 142 40Z" fill="#8a9aa4" stroke="#4c5860" stroke-width="1.6"/>
+        <path d="M96 68 Q104 90 116 72Z" fill="#8a9aa4" stroke="#4c5860" stroke-width="1.4"/>
+        <circle cx="30" cy="38" r="3.2" fill="#12202a"/><circle cx="30" cy="62" r="3.2" fill="#12202a"/>
+      </svg>`,
+  },
+  {
+    id: 'opah',
+    name: 'Opah',
+    sci: 'Lampris guttatus',
+    depth: 280,
+    range: '50–500 m',
+    size: 180,
+    fact: 'The first fish ever found to be fully warm-blooded — it heats its whole body by circulating warm blood, so it stays fast and sharp while hunting in cold, deep water where other fish turn sluggish.',
+    svg: `
+      <svg viewBox="0 0 170 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Opah moonfish">
+        <defs><radialGradient id="op-b" cx="0.4" cy="0.4" r="0.7"><stop offset="0" stop-color="#7fa0b8"/><stop offset="1" stop-color="#3f5a72"/></radialGradient></defs>
+        <ellipse cx="80" cy="76" rx="60" ry="52" fill="url(#op-b)" stroke="#2a3c4c" stroke-width="2.5"/>
+        <path d="M80 24 Q88 8 96 26 Q90 34 82 32Z" fill="#d9484f" stroke="#8a2a2e" stroke-width="1.4"/>
+        <path d="M124 44 Q150 40 148 60 Q140 78 120 66Z" fill="#e0555c" stroke="#8a2a2e" stroke-width="1.6"/>
+        <path d="M120 92 Q146 96 142 114 Q132 124 116 106Z" fill="#e0555c" stroke="#8a2a2e" stroke-width="1.6"/>
+        <path d="M30 66 Q10 60 8 74 Q14 90 34 82Z" fill="#e0555c" stroke="#8a2a2e" stroke-width="1.6"/>
+        <g fill="#cfe0ea" opacity="0.7"><circle cx="60" cy="56" r="2.6"/><circle cx="84" cy="48" r="2.6"/><circle cx="100" cy="66" r="2.6"/><circle cx="70" cy="82" r="2.6"/><circle cx="96" cy="92" r="2.6"/><circle cx="52" cy="90" r="2.6"/></g>
+        <circle cx="46" cy="60" r="9" fill="#f4d24a"/><circle cx="44" cy="60" r="4.5" fill="#141008"/>
+      </svg>`,
+  },
+  {
+    id: 'oarfish',
+    name: 'Giant Oarfish',
+    sci: 'Regalecus glesne',
+    depth: 340,
+    range: '200–1,000 m',
+    size: 240,
+    fact: 'The longest bony fish in the sea, a silvery ribbon that can stretch 8 metres with a flowing red crest. Rarely seen alive, its serpentine body is almost certainly behind many old tales of sea monsters.',
+    svg: `
+      <svg viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Giant oarfish">
+        <defs><linearGradient id="oa-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8eef2"/><stop offset="1" stop-color="#a8bac6"/></linearGradient></defs>
+        <path d="M14 46 Q60 36 130 42 Q200 48 242 44 Q244 52 242 56 Q200 60 130 56 Q60 60 14 54 Q8 50 14 46Z" fill="url(#oa-b)" stroke="#5e6e7a" stroke-width="1.6"/>
+        <path d="M20 42 Q60 30 130 34 Q200 38 240 36" stroke="#d9484f" stroke-width="3" fill="none" opacity="0.9"/>
+        <path d="M18 40 Q16 22 22 24 Q24 34 26 40Z" fill="#d9484f"/>
+        <path d="M30 40 Q30 26 36 28 M46 41 Q46 28 52 30" stroke="#d9484f" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <g fill="#c8d4dc" opacity="0.6"><circle cx="70" cy="48" r="2"/><circle cx="110" cy="49" r="2"/><circle cx="150" cy="49" r="2"/><circle cx="190" cy="49" r="2"/></g>
+        <circle cx="26" cy="47" r="3.4" fill="#12202a"/><circle cx="27" cy="46" r="1.1" fill="#fff"/>
+      </svg>`,
+  },
+  {
+    id: 'strawberry-squid',
+    name: 'Strawberry Squid',
+    sci: 'Histioteuthis heteropsis',
+    depth: 420,
+    range: '200–1,000 m',
+    size: 120,
+    fact: 'Has two wildly mismatched eyes: one is huge and looks up to spot shadows against the faint light above, while the other is small and points down, watching for the sparkle of glowing prey below.',
+    svg: `
+      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Strawberry squid">
+        <defs><linearGradient id="st-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c85868"/><stop offset="1" stop-color="#8a2c3c"/></linearGradient></defs>
+        <path d="M60 8 Q90 12 90 44 Q90 66 76 74 Q60 80 44 74 Q30 66 30 44 Q30 12 60 8Z" fill="url(#st-b)" stroke="#4e141e" stroke-width="2"/>
+        <g fill="#ffd24a"><circle cx="44" cy="30" r="2"/><circle cx="60" cy="24" r="2"/><circle cx="76" cy="34" r="2"/><circle cx="50" cy="50" r="2"/><circle cx="70" cy="52" r="2"/><circle cx="60" cy="40" r="2"/></g>
+        <g stroke="#a63a4a" stroke-width="4" stroke-linecap="round" fill="none">
+          <path d="M46 74 Q40 104 34 128"/><path d="M56 76 Q54 106 50 132"/><path d="M64 76 Q66 106 70 132"/><path d="M74 74 Q84 104 92 126"/><path d="M40 74 Q30 100 20 120"/>
+        </g>
+        <circle cx="46" cy="40" r="12" fill="#f2e08a"/><circle cx="46" cy="40" r="5" fill="#12100a"/>
+        <circle cx="74" cy="42" r="5" fill="#3a1218"/>
+      </svg>`,
+  },
+  {
+    id: 'sixgill-shark',
+    name: 'Bluntnose Sixgill Shark',
+    sci: 'Hexanchus griseus',
+    depth: 500,
+    range: '200–1,100 m',
+    size: 230,
+    fact: 'An ancient giant with six gill slits instead of the usual five, and a single fin set far back — a body plan little changed since before the dinosaurs. It rises from the depths at night to hunt.',
+    svg: `
+      <svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sixgill shark">
+        <defs><linearGradient id="sg-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a6b60"/><stop offset="1" stop-color="#333f38"/></linearGradient></defs>
+        <path d="M10 58 Q80 40 160 50 Q210 56 234 48 Q222 62 218 64 Q224 74 220 86 Q198 70 182 66 Q100 76 40 70 Q22 68 10 58Z" fill="url(#sg-b)" stroke="#232c27" stroke-width="2"/>
+        <path d="M150 46 Q160 30 174 44Z" fill="#48564d" stroke="#232c27" stroke-width="1.6"/>
+        <path d="M60 70 Q68 92 82 74Z" fill="#48564d" stroke="#232c27" stroke-width="1.4"/>
+        <g stroke="#2a332e" stroke-width="1.6" opacity="0.8"><path d="M44 54 Q46 60 44 66"/><path d="M50 54 Q52 60 50 66"/><path d="M56 55 Q58 61 56 67"/><path d="M62 55 Q64 61 62 67"/><path d="M68 55 Q70 61 68 67"/><path d="M74 56 Q76 62 74 68"/></g>
+        <circle cx="26" cy="56" r="4" fill="#a8f06a"/><circle cx="26" cy="56" r="2" fill="#12180c"/>
+      </svg>`,
+  },
+  {
+    id: 'pyrosome',
+    name: 'Pyrosome',
+    sci: 'Pyrosoma atlanticum',
+    depth: 560,
+    range: '0–1,000 m',
+    size: 150,
+    fact: 'Not one animal but thousands of tiny clones fused into a single glowing tube, open at one end. Each clone filters food and, when touched, the whole colony lights up in rippling waves of blue-green light.',
+    svg: `
+      <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pyrosome">
+        <defs><linearGradient id="py-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfeadd" stop-opacity="0.9"/><stop offset="1" stop-color="#7fbfae" stop-opacity="0.7"/></linearGradient></defs>
+        <path d="M40 12 Q80 8 84 40 Q88 90 78 138 Q72 152 56 150 Q42 148 40 132 Q34 84 34 44 Q34 16 40 12Z" fill="url(#py-b)" stroke="#5fa08c" stroke-width="1.8"/>
+        <ellipse cx="60" cy="18" rx="22" ry="9" fill="#04101c" opacity="0.5"/>
+        <ellipse cx="60" cy="18" rx="22" ry="9" fill="none" stroke="#5fa08c" stroke-width="1.6"/>
+        <g fill="#8ff0d8"><circle cx="48" cy="40" r="2"/><circle cx="70" cy="46" r="2"/><circle cx="52" cy="64" r="2"/><circle cx="72" cy="72" r="2"/><circle cx="50" cy="90" r="2"/><circle cx="68" cy="100" r="2"/><circle cx="54" cy="120" r="2"/></g>
+        <path d="M44 40 Q60 44 76 40 M42 70 Q60 74 78 70 M44 104 Q60 108 74 104" stroke="#6fb8a4" stroke-width="1.2" fill="none" opacity="0.6"/>
+      </svg>`,
+  },
+  {
+    id: 'lancetfish',
+    name: 'Longnose Lancetfish',
+    sci: 'Alepisaurus ferox',
+    depth: 620,
+    range: '0–1,800 m',
+    size: 200,
+    fact: 'A fanged predator with a tall sail on its back and a soft, watery body that can’t chase fast. Instead it swallows prey whole and digests slowly — and its stomach is so often intact that scientists study it to learn what lives in the deep.',
+    svg: `
+      <svg viewBox="0 0 230 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lancetfish">
+        <defs><linearGradient id="la-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5c6b78"/><stop offset="1" stop-color="#2a3540"/></linearGradient></defs>
+        <path d="M8 58 Q20 50 30 58 Q120 50 190 60 Q210 64 224 56 Q214 68 206 70 Q212 80 208 90 Q194 76 186 74 Q120 78 40 72 Q22 78 8 70 Q20 64 8 58Z" fill="url(#la-b)" stroke="#151d24" stroke-width="1.8"/>
+        <path d="M40 54 Q70 20 100 52 Q130 22 160 54 Q140 40 120 48 Q90 34 70 50 Q56 42 40 54Z" fill="#48586a" stroke="#151d24" stroke-width="1.4"/>
+        <path d="M28 58 L32 50 L36 58 L40 50 L44 58" fill="none" stroke="#e8eef2" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="24" cy="58" r="4.5" fill="#0e161d"/><circle cx="25.4" cy="56.4" r="1.6" fill="#bfe4f2"/>
+      </svg>`,
+  },
+  {
+    id: 'hagfish',
+    name: 'Pacific Hagfish',
+    sci: 'Eptatretus stoutii',
+    depth: 680,
+    range: '100–900 m',
+    size: 150,
+    fact: 'When a predator bites, it instantly unleashes a cloud of slime that swells into litres of choking goo, clogging the attacker’s gills. Jawless and nearly blind, it ties itself in a knot to scrape the slime back off.',
+    svg: `
+      <svg viewBox="0 0 210 70" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hagfish">
+        <defs><linearGradient id="hg-b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c88f8a"/><stop offset="1" stop-color="#8a5f5a"/></linearGradient></defs>
+        <path d="M12 36 Q30 26 60 32 Q130 28 196 38 Q200 46 194 48 Q130 44 60 44 Q30 48 12 40 Q6 38 12 36Z" fill="url(#hg-b)" stroke="#5e3e3a" stroke-width="1.6"/>
+        <g stroke="#7a544e" stroke-width="1.4" stroke-linecap="round"><path d="M12 34 Q4 30 2 32 M14 38 Q6 42 4 44 M18 32 Q12 26 10 26 M18 42 Q12 48 10 48</path></g>
+        <g fill="#e8dede" opacity="0.6"><circle cx="90" cy="46" r="2"/><circle cx="120" cy="47" r="2"/><circle cx="150" cy="47" r="2"/></g>
+        <circle cx="24" cy="36" r="2.4" fill="#3a2624" opacity="0.7"/>
+      </svg>`,
+  },
+  {
+    id: 'telescope-octopus',
+    name: 'Telescope Octopus',
+    sci: 'Amphitretus pelagicus',
+    depth: 740,
+    range: '150–2,000 m',
+    size: 120,
+    fact: 'Almost perfectly transparent and the only octopus with tubular, telescope-like eyes on stalks. They swivel to point upward, scanning the faint glow above for the silhouettes of passing prey.',
+    svg: `
+      <svg viewBox="0 0 130 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Telescope octopus">
+        <defs><radialGradient id="to-b" cx="0.5" cy="0.4" r="0.6"><stop offset="0" stop-color="#cfe6ea" stop-opacity="0.6"/><stop offset="1" stop-color="#8fb6bc" stop-opacity="0.4"/></radialGradient></defs>
+        <path d="M65 20 Q98 24 98 56 Q98 74 84 82 Q86 104 76 128 Q70 116 70 98 Q66 110 60 98 Q52 116 46 128 Q38 104 40 82 Q26 74 26 56 Q26 24 65 20Z" fill="url(#to-b)" stroke="#7fa8ae" stroke-width="1.8"/>
+        <g stroke="#7fa8ae" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"><path d="M52 82 Q46 104 44 124"/><path d="M62 84 Q62 106 62 126"/><path d="M74 82 Q80 104 84 124"/></g>
+        <rect x="42" y="40" width="10" height="16" rx="5" fill="#3a5a60"/><circle cx="47" cy="42" r="5" fill="#0c1c1e"/>
+        <rect x="78" y="40" width="10" height="16" rx="5" fill="#3a5a60"/><circle cx="83" cy="42" r="5" fill="#0c1c1e"/>
+      </svg>`,
+  },
+  {
+    id: 'siphonophore',
+    name: 'Siphonophore',
+    sci: 'Marrus orthocanna',
+    depth: 1010,
+    range: '200–2,000 m',
+    size: 130,
+    fact: 'Looks like a single jelly but is really a colony of specialized clones strung together, each doing one job — floating, swimming, feeding, or stinging. Some relatives grow longer than a blue whale.',
+    svg: `
+      <svg viewBox="0 0 90 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Siphonophore">
+        <defs><linearGradient id="si-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0783a"/><stop offset="1" stop-color="#a84a20"/></linearGradient></defs>
+        <path d="M45 6 Q64 8 64 28 Q64 44 45 46 Q26 44 26 28 Q26 8 45 6Z" fill="url(#si-b)" stroke="#7a3414" stroke-width="1.6"/>
+        <g fill="#bfe8dd" stroke="#7fb0a2" stroke-width="1.2" opacity="0.85">
+          <path d="M32 50 Q20 56 30 66 Q44 60 45 52Z"/><path d="M58 50 Q70 56 60 66 Q46 60 45 52Z"/>
+          <path d="M32 68 Q20 74 30 84 Q44 78 45 70Z"/><path d="M58 68 Q70 74 60 84 Q46 78 45 70Z"/>
+          <path d="M34 86 Q22 92 32 102 Q44 96 45 88Z"/><path d="M56 86 Q68 92 58 102 Q46 96 45 88Z"/>
+        </g>
+        <g stroke="#c86a3a" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.8"><path d="M45 104 Q40 130 44 160"/><path d="M45 104 Q52 132 48 164"/><path d="M45 104 Q38 138 36 166"/></g>
+      </svg>`,
+  },
+  {
+    id: 'glass-squid',
+    name: 'Glass Squid',
+    sci: 'Cranchiidae',
+    depth: 860,
+    range: '200–1,000 m',
+    size: 120,
+    fact: 'Nearly invisible — its whole body is see-through except for its eyes and gut. To hide even those telltale shadows, it shines light organs beneath its eyes to erase its silhouette from below.',
+    svg: `
+      <svg viewBox="0 0 110 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Glass squid">
+        <defs><linearGradient id="gsq-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe6ea" stop-opacity="0.55"/><stop offset="1" stop-color="#8fb6bc" stop-opacity="0.35"/></linearGradient></defs>
+        <path d="M55 12 Q84 18 84 62 Q84 92 70 100 Q55 104 40 100 Q26 92 26 62 Q26 18 55 12Z" fill="url(#gsq-b)" stroke="#7fa8ae" stroke-width="1.8"/>
+        <g stroke="#7fa8ae" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"><path d="M42 100 Q38 122 36 142"/><path d="M50 102 Q50 124 50 144"/><path d="M60 102 Q62 124 64 142"/><path d="M68 100 Q74 122 76 140"/></g>
+        <ellipse cx="55" cy="46" rx="8" ry="16" fill="#9c6a4a" opacity="0.55"/>
+        <circle cx="42" cy="40" r="6" fill="#2a4046"/><circle cx="43" cy="38" r="2" fill="#bfe4f2"/>
+        <circle cx="68" cy="40" r="6" fill="#2a4046"/><circle cx="69" cy="38" r="2" fill="#bfe4f2"/>
+        <circle cx="42" cy="50" r="2.2" fill="#8ff0ff"/><circle cx="68" cy="50" r="2.2" fill="#8ff0ff"/>
+      </svg>`,
+  },
+  {
+    id: 'salp',
+    name: 'Salp',
+    sci: 'Salpa maxima',
+    depth: 900,
+    range: '0–800 m',
+    size: 110,
+    fact: 'A see-through, barrel-shaped animal that jets water through its body to move and feed at once, often linking into long glowing chains. As it eats, it packages carbon and sinks it to the deep — a tiny cog in cooling the planet.',
+    svg: `
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Salp">
+        <defs><linearGradient id="sa-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dce9ef" stop-opacity="0.55"/><stop offset="1" stop-color="#a6c6cf" stop-opacity="0.4"/></linearGradient></defs>
+        <path d="M32 20 Q88 16 92 60 Q92 96 60 102 Q28 96 28 60 Q28 24 32 20Z" fill="url(#sa-b)" stroke="#8fb4be" stroke-width="1.8"/>
+        <ellipse cx="60" cy="24" rx="26" ry="8" fill="none" stroke="#8fb4be" stroke-width="1.6"/>
+        <ellipse cx="60" cy="96" rx="18" ry="7" fill="none" stroke="#8fb4be" stroke-width="1.6"/>
+        <path d="M44 54 Q60 60 76 54 Q70 68 60 68 Q50 68 44 54Z" fill="#d98a4a" opacity="0.7" stroke="#a86a30" stroke-width="1.2"/>
+        <path d="M36 40 Q60 44 84 40 M34 74 Q60 78 86 74" stroke="#9fc0c8" stroke-width="1.2" fill="none" opacity="0.6"/>
+      </svg>`,
+  },
+  {
+    id: 'cutthroat-eel',
+    name: 'Cutthroat Eel',
+    sci: 'Synaphobranchidae',
+    depth: 940,
+    range: '300–3,700 m',
+    size: 160,
+    fact: 'Named for gill slits set low on the throat like a slash. These eels are among the first to arrive at anything dead that sinks to the deep seafloor, swarming bait traps by the dozen.',
+    svg: `
+      <svg viewBox="0 0 210 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cutthroat eel">
+        <defs><linearGradient id="cte-b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a4c52"/><stop offset="1" stop-color="#23252a"/></linearGradient></defs>
+        <path d="M14 40 Q34 30 56 36 Q130 32 196 44 Q202 50 194 54 Q130 50 56 50 Q34 54 14 46 Q8 43 14 40Z" fill="url(#cte-b)" stroke="#131418" stroke-width="1.6"/>
+        <path d="M56 34 Q130 30 194 44" stroke="#5c5e64" stroke-width="1.4" fill="none" opacity="0.6"/>
+        <path d="M28 46 Q26 52 30 56" stroke="#8a2a2a" stroke-width="2" fill="none"/>
+        <circle cx="26" cy="39" r="3" fill="#0a0b0d"/>
+      </svg>`,
+  },
+  {
+    id: 'phronima',
+    name: 'Pram Bug',
+    sci: 'Phronima sedentaria',
+    depth: 780,
+    range: '200–1,000 m',
+    size: 92,
+    fact: 'A see-through amphipod that hollows out a jelly-like salp and rides inside the barrel, pushing it through the water like a pram while it raises its young. Its eerie look helped inspire the creature in the film Alien.',
+    svg: `
+      <svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pram bug amphipod">
+        <defs><radialGradient id="ph-b" cx="0.5" cy="0.5" r="0.55"><stop offset="0" stop-color="#dcecec" stop-opacity="0.5"/><stop offset="1" stop-color="#9fc0c0" stop-opacity="0.35"/></radialGradient></defs>
+        <ellipse cx="60" cy="56" rx="46" ry="40" fill="url(#ph-b)" stroke="#8fb4b4" stroke-width="1.6"/>
+        <path d="M52 30 Q64 24 74 32 Q78 46 72 58 Q62 70 52 62 Q46 46 52 30Z" fill="#bfd8d8" opacity="0.7" stroke="#7fa0a0" stroke-width="1.4"/>
+        <g stroke="#8fb0b0" stroke-width="2" stroke-linecap="round"><path d="M56 60 L48 82"/><path d="M64 62 L60 86"/><path d="M70 58 L78 80"/></g>
+        <circle cx="58" cy="38" r="4" fill="#2a4444"/><circle cx="70" cy="40" r="3" fill="#2a4444"/>
+      </svg>`,
+  },
+
+  // Midnight
+  {
+    id: 'lizardfish',
+    name: 'Deep-sea Lizardfish',
+    sci: 'Bathysaurus ferox',
+    depth: 1080,
+    range: '1,000–3,500 m',
+    size: 170,
+    fact: 'A ferocious ambush hunter of the deep seafloor whose mouth, tongue and even the roof of its mouth are lined with hinged, backward-pointing teeth — so once it grabs a meal, nothing gets back out.',
+    svg: `
+      <svg viewBox="0 0 210 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deep-sea lizardfish">
+        <defs><linearGradient id="lz-b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6a6a56"/><stop offset="1" stop-color="#37372a"/></linearGradient></defs>
+        <path d="M8 42 Q30 34 44 44 Q120 40 180 50 Q198 54 204 46 Q196 58 188 60 Q120 64 46 58 Q30 66 8 58 Q22 50 8 42Z" fill="url(#lz-b)" stroke="#1e1e15" stroke-width="1.8"/>
+        <path d="M8 42 Q26 44 44 44 L44 52 Q26 54 8 54 Q4 48 8 42Z" fill="#3a3a2c"/>
+        <path d="M12 44 L18 40 L24 44 L30 40 L36 44" fill="none" stroke="#e8e8d8" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M12 52 L18 56 L24 52 L30 56 L36 52" fill="none" stroke="#e8e8d8" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="40" cy="42" r="4" fill="#0e0e08"/><circle cx="41" cy="41" r="1.2" fill="#c8d86a"/>
+      </svg>`,
+  },
+  {
+    id: 'pigbutt-worm',
+    name: 'Pigbutt Worm',
+    sci: 'Chaetopterus pugaporcinus',
+    depth: 1180,
+    range: '~1,000 m',
+    size: 92,
+    fact: 'A marble-sized deep-sea worm that puffs its middle segments into a glowing balloon shaped, unmistakably, like a tiny pair of buttocks. It drifts in a cloud of mucus that traps falling food.',
+    svg: `
+      <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pigbutt worm">
+        <defs><radialGradient id="pb-b" cx="0.5" cy="0.4" r="0.6"><stop offset="0" stop-color="#f2c9a8"/><stop offset="1" stop-color="#c88a64"/></radialGradient></defs>
+        <path d="M55 16 Q92 20 92 58 Q92 92 55 98 Q18 92 18 58 Q18 20 55 16Z" fill="url(#pb-b)" stroke="#9c6244" stroke-width="1.8"/>
+        <path d="M55 20 Q55 60 55 96" stroke="#b07a58" stroke-width="3" fill="none" opacity="0.6"/>
+        <ellipse cx="36" cy="54" rx="16" ry="24" fill="#f6d6ba" opacity="0.5"/>
+        <ellipse cx="74" cy="54" rx="16" ry="24" fill="#f6d6ba" opacity="0.5"/>
+        <g stroke="#e8b894" stroke-width="1.4" opacity="0.7"><path d="M20 44 Q10 42 6 44 M20 66 Q10 68 6 66"/></g>
+      </svg>`,
+  },
+  {
+    id: 'bigfin-squid',
+    name: 'Bigfin Squid',
+    sci: 'Magnapinna',
+    depth: 1300,
+    range: '1,000–4,700 m',
+    size: 200,
+    fact: 'One of the ocean’s strangest sights, filmed only a handful of times. It holds its impossibly long arms bent at the "elbow" and out at right angles, trailing them like sticky threads many metres below its small body.',
+    svg: `
+      <svg viewBox="0 0 140 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bigfin squid">
+        <defs><linearGradient id="bf-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9a2b0"/><stop offset="1" stop-color="#a86a7a"/></linearGradient></defs>
+        <path d="M70 16 Q84 18 84 34 Q84 46 70 48 Q56 46 56 34 Q56 18 70 16Z" fill="url(#bf-b)" stroke="#7a4452" stroke-width="1.6"/>
+        <path d="M56 22 Q30 16 22 26 Q42 32 56 34Z" fill="#c68a98" opacity="0.85"/>
+        <path d="M84 22 Q110 16 118 26 Q98 32 84 34Z" fill="#c68a98" opacity="0.85"/>
+        <g stroke="#c07f8e" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M60 48 Q60 66 40 66 Q40 120 34 172"/>
+          <path d="M66 48 Q66 72 52 72 Q52 122 50 174"/>
+          <path d="M74 48 Q74 72 88 72 Q88 122 90 174"/>
+          <path d="M80 48 Q80 66 100 66 Q100 120 106 172"/>
+        </g>
+      </svg>`,
+  },
+  {
+    id: 'footballfish',
+    name: 'Football Fish',
+    sci: 'Himantolophus groenlandicus',
+    depth: 1420,
+    range: '1,000–2,000 m',
+    size: 130,
+    fact: 'A round, spiky anglerfish that dangles a glowing bulb over its mouth to draw prey in. Only the football-sized female fishes; the tiny male is a fraction of her size and latches on to live off her body.',
+    svg: `
+      <svg viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Football fish">
+        <defs>
+          <radialGradient id="fb-l" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#fdffd8"/><stop offset="0.5" stop-color="#b8f3a8"/><stop offset="1" stop-color="#b8f3a8" stop-opacity="0"/></radialGradient>
+          <radialGradient id="fb-b" cx="0.45" cy="0.4" r="0.7"><stop offset="0" stop-color="#33323c"/><stop offset="1" stop-color="#111017"/></radialGradient>
+        </defs>
+        <circle cx="72" cy="70" r="42" fill="url(#fb-b)" stroke="#08080c" stroke-width="2"/>
+        <g stroke="#2a2933" stroke-width="2" stroke-linecap="round"><path d="M40 44 L34 38 M104 44 L110 38 M40 96 L34 102 M104 96 L110 102 M30 70 L22 70 M114 70 L122 70"/></g>
+        <circle cx="60" cy="30" r="14" fill="url(#fb-l)" class="lure-glow"/><circle cx="60" cy="30" r="4" fill="#f4ffc4"/>
+        <path d="M61 34 Q64 44 66 52" stroke="#2a2933" stroke-width="2.4" fill="none"/>
+        <path d="M46 78 Q60 86 78 80" fill="none" stroke="#e8e8ee" stroke-width="2" stroke-linecap="round"/>
+        <path d="M48 78 L50 84 M56 80 L57 86 M64 81 L64 87 M72 80 L73 86" stroke="#e8e8ee" stroke-width="1.5"/>
+        <circle cx="58" cy="60" r="4" fill="#08080c"/><circle cx="59" cy="59" r="1.2" fill="#9fb0c0"/>
+      </svg>`,
+  },
+  {
+    id: 'loosejaw',
+    name: 'Stoplight Loosejaw',
+    sci: 'Malacosteus niger',
+    depth: 1520,
+    range: '500–3,000 m',
+    size: 130,
+    fact: 'Shines a secret red searchlight from organs under its eyes — a colour nearly every other deep animal is blind to — so it can spot prey unseen. Its lower jaw has no floor of skin, snapping shut like a bare cage of teeth.',
+    svg: `
+      <svg viewBox="0 0 170 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stoplight loosejaw">
+        <defs><linearGradient id="lj-b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#26242c"/><stop offset="1" stop-color="#0c0b10"/></linearGradient></defs>
+        <path d="M56 40 Q110 32 160 44 Q166 50 158 54 Q110 50 60 54 Q40 60 20 58 Q34 50 56 40Z" fill="url(#lj-b)" stroke="#070610" stroke-width="1.6"/>
+        <path d="M20 58 Q40 56 56 40 L60 44 Q46 58 40 66 Q30 64 20 58Z" fill="#18161e"/>
+        <path d="M26 52 L32 44 L38 52 L44 44 L50 52" fill="none" stroke="#eae8ee" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M28 60 L34 54 L40 62 L46 54 L52 62" fill="none" stroke="#eae8ee" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="60" cy="42" r="5" fill="#0a0810"/>
+        <circle cx="54" cy="48" r="4" fill="#ff5a5a" class="lure-glow"/>
+        <circle cx="66" cy="40" r="2.4" fill="#8ff0ff"/>
+      </svg>`,
+  },
+  {
+    id: 'crossota',
+    name: 'Crossota Jelly',
+    sci: 'Crossota millsae',
+    depth: 1640,
+    range: '1,000–3,000 m',
+    size: 92,
+    fact: 'A small, deep-red jelly that spends its whole life in open water, never touching the seafloor. Dozens of fine tentacles fan out around its bell as it pulses slowly through the eternal night.',
+    svg: `
+      <svg viewBox="0 0 110 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Crossota jelly">
+        <defs><radialGradient id="cr-b" cx="0.5" cy="0.42" r="0.55"><stop offset="0" stop-color="#d13a4a"/><stop offset="1" stop-color="#7c1420"/></radialGradient></defs>
+        <path d="M20 46 Q20 18 55 16 Q90 18 90 46 Q90 58 78 60 Q55 64 32 60 Q20 58 20 46Z" fill="url(#cr-b)" stroke="#4e0c14" stroke-width="1.8"/>
+        <ellipse cx="55" cy="44" rx="18" ry="12" fill="#e8546a" opacity="0.6"/>
+        <g stroke="#e8546a" stroke-width="1.4" stroke-linecap="round" opacity="0.85">
+          <path d="M24 58 L14 96"/><path d="M34 62 L28 104"/><path d="M44 63 L42 108"/><path d="M55 64 L55 110"/><path d="M66 63 L68 108"/><path d="M76 62 L82 104"/><path d="M86 58 L96 96"/>
+        </g>
+      </svg>`,
+  },
+  {
+    id: 'whipnose',
+    name: 'Whipnose Anglerfish',
+    sci: 'Gigantactis',
+    depth: 1740,
+    range: '1,000–2,700 m',
+    size: 130,
+    fact: 'Its fishing rod is longer than its whole body, dangling a glowing lure far out front to tempt prey back toward the waiting mouth. Oddly, it is often seen swimming upside-down, dragging the lure along the seabed.',
+    svg: `
+      <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Whipnose anglerfish">
+        <defs><linearGradient id="wn-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2a32"/><stop offset="1" stop-color="#101017"/></linearGradient></defs>
+        <path d="M96 52 Q130 40 160 52 Q176 60 160 74 Q130 86 100 80 Q78 84 70 66 Q78 50 96 52Z" fill="url(#wn-b)" stroke="#08080c" stroke-width="1.8"/>
+        <path d="M100 54 Q80 62 78 70 Q98 72 108 66Z" fill="#1a1a22"/>
+        <path d="M82 60 L88 66 L94 60" stroke="#e8e8ee" stroke-width="1.6" fill="none"/>
+        <path d="M104 44 Q70 20 14 20" fill="none" stroke="#33333d" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="14" cy="20" r="7" fill="#c9f0a8" class="lure-glow"/><circle cx="14" cy="20" r="3" fill="#f4ffc4"/>
+        <circle cx="104" cy="58" r="4.5" fill="#08080c"/><circle cx="105" cy="56.6" r="1.4" fill="#9fb0c0"/>
+      </svg>`,
+  },
+  {
+    id: 'coffinfish',
+    name: 'Coffinfish',
+    sci: 'Chaunax',
+    depth: 1850,
+    range: '200–2,500 m',
+    size: 120,
+    fact: 'A pudgy "sea toad" covered in prickly skin that lumbers over the seabed on arm-like fins. It can gulp in huge mouthfuls of seawater and hold its breath for minutes, saving energy where food is scarce.',
+    svg: `
+      <svg viewBox="0 0 140 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coffinfish">
+        <defs><radialGradient id="co-b" cx="0.45" cy="0.4" r="0.7"><stop offset="0" stop-color="#e0645c"/><stop offset="1" stop-color="#9c342e"/></radialGradient></defs>
+        <path d="M40 40 Q90 26 116 48 Q128 62 116 80 Q92 98 54 92 Q28 86 26 62 Q30 46 40 40Z" fill="url(#co-b)" stroke="#6a1f1c" stroke-width="2"/>
+        <path d="M52 90 Q48 104 40 106 Q42 96 46 88Z" fill="#c04c46" stroke="#6a1f1c" stroke-width="1.4"/>
+        <path d="M96 88 Q100 102 108 104 Q104 94 98 86Z" fill="#c04c46" stroke="#6a1f1c" stroke-width="1.4"/>
+        <g fill="#f2a09a" opacity="0.6"><circle cx="60" cy="50" r="2"/><circle cx="78" cy="46" r="2"/><circle cx="92" cy="58" r="2"/><circle cx="70" cy="66" r="2"/><circle cx="90" cy="72" r="2"/></g>
+        <path d="M44 66 Q58 74 76 70" fill="none" stroke="#6a1f1c" stroke-width="2"/>
+        <circle cx="52" cy="52" r="5" fill="#2a0c0a"/><circle cx="53.4" cy="50.4" r="1.6" fill="#f2a09a"/>
+      </svg>`,
+  },
+  {
+    id: 'glass-octopus',
+    name: 'Glass Octopus',
+    sci: 'Vitreledonella richardi',
+    depth: 1960,
+    range: '1,000–3,000 m',
+    size: 130,
+    fact: 'Almost completely transparent — only its cylindrical eyes, its gut and its optic nerves are visible, everything else clear as water. This near-invisibility is its best defence in a place with nowhere to hide.',
+    svg: `
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Glass octopus">
+        <defs><radialGradient id="go2-b" cx="0.5" cy="0.4" r="0.6"><stop offset="0" stop-color="#d6ecec" stop-opacity="0.5"/><stop offset="1" stop-color="#9fc4c4" stop-opacity="0.35"/></radialGradient></defs>
+        <path d="M70 18 Q104 24 104 60 Q104 80 90 88 Q92 112 82 132 Q76 118 74 100 Q68 112 62 100 Q60 118 54 132 Q44 112 46 88 Q32 80 32 60 Q32 24 70 18Z" fill="url(#go2-b)" stroke="#7fa8a8" stroke-width="1.8"/>
+        <g stroke="#7fa8a8" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.75"><path d="M50 88 Q44 110 42 128"/><path d="M66 90 Q66 112 66 130"/><path d="M84 88 Q92 110 96 126"/></g>
+        <rect x="52" y="44" width="9" height="18" rx="4" fill="#2c4646"/>
+        <rect x="79" y="44" width="9" height="18" rx="4" fill="#2c4646"/>
+        <ellipse cx="70" cy="74" rx="7" ry="14" fill="#a6867a" opacity="0.6"/>
+      </svg>`,
+  },
+  {
+    id: 'paper-lantern-jelly',
+    name: 'Red Paper Lantern Jelly',
+    sci: 'Pandea rubra',
+    depth: 2080,
+    range: '1,000–2,000 m',
+    size: 100,
+    fact: 'A deep-red jelly that can crumple and pleat its bell like a folding paper lantern, then smooth itself back out to drift on. Small shrimp sometimes hitch a ride inside its stomach.',
+    svg: `
+      <svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Red paper lantern jelly">
+        <defs><radialGradient id="pl-b" cx="0.5" cy="0.4" r="0.6"><stop offset="0" stop-color="#c83848"/><stop offset="1" stop-color="#7a1220"/></radialGradient></defs>
+        <path d="M24 40 Q24 14 55 12 Q86 14 86 40 Q86 72 68 88 Q55 96 42 88 Q24 72 24 40Z" fill="url(#pl-b)" stroke="#4e0c14" stroke-width="1.8"/>
+        <g stroke="#8a1e2a" stroke-width="1.6" opacity="0.7"><path d="M40 16 Q38 54 48 88"/><path d="M55 12 Q55 54 55 92"/><path d="M70 16 Q72 54 62 88"/></g>
+        <g stroke="#d9546a" stroke-width="1.4" stroke-linecap="round" opacity="0.85"><path d="M40 88 L36 118"/><path d="M50 92 L48 122"/><path d="M60 92 L62 122"/><path d="M68 88 L74 118"/></g>
+      </svg>`,
+  },
+  {
+    id: 'zombie-worm',
+    name: 'Zombie Worm',
+    sci: 'Osedax',
+    depth: 2200,
+    range: '1,000–3,000 m',
+    size: 92,
+    fact: 'Has no mouth, no gut, and no stomach. It bores into the bones of dead whales with acid and lets bacteria inside it digest the fat — earning the nickname "bone-eating snot flower." Only the females feed; the males live tiny inside them.',
+    svg: `
+      <svg viewBox="0 0 110 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zombie worm">
+        <defs><linearGradient id="zw-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0645c"/><stop offset="1" stop-color="#a83a34"/></linearGradient></defs>
+        <path d="M40 118 Q36 96 44 78 Q52 66 66 66 Q78 68 78 82 Q76 100 72 118Z" fill="#d8c8b8" opacity="0.55"/>
+        <path d="M55 70 Q55 92 55 116" stroke="#a83a34" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <g stroke="#e0645c" stroke-width="3.5" stroke-linecap="round" fill="none">
+          <path d="M55 68 Q40 44 26 24"/><path d="M55 66 Q50 40 44 14"/><path d="M55 66 Q60 40 66 14"/><path d="M55 68 Q70 44 84 24"/><path d="M55 70 Q46 48 32 40"/><path d="M55 70 Q64 48 78 40"/>
+        </g>
+        <g stroke="#f2948c" stroke-width="1.4" opacity="0.7"><path d="M32 30 Q30 26 32 22 M44 20 Q44 16 46 14 M66 20 Q66 16 64 14 M84 30 Q86 26 84 22"/></g>
+      </svg>`,
+  },
+  {
+    id: 'eelpout',
+    name: 'Deep-sea Eelpout',
+    sci: 'Zoarcidae',
+    depth: 2320,
+    range: '1,000–2,700 m',
+    size: 150,
+    fact: 'One of the few fish families that thrives around scalding hydrothermal vents, grazing on the shrimp and crabs that swarm the mineral chimneys — living between water hot enough to melt lead and the near-freezing deep.',
+    svg: `
+      <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deep-sea eelpout">
+        <defs><linearGradient id="ep-b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7a6f8a"/><stop offset="1" stop-color="#3c3548"/></linearGradient></defs>
+        <path d="M12 42 Q28 30 50 36 Q120 32 184 44 Q192 48 184 54 Q120 52 50 52 Q28 56 12 48 Q6 45 12 42Z" fill="url(#ep-b)" stroke="#241f2c" stroke-width="1.6"/>
+        <path d="M50 32 Q120 28 184 44 M50 56 Q120 56 182 46" stroke="#4a4256" stroke-width="1.2" fill="none" opacity="0.6"/>
+        <path d="M20 44 Q30 48 40 44" stroke="#241f2c" stroke-width="1.6" fill="none"/>
+        <circle cx="30" cy="40" r="3.4" fill="#0c0a10"/><circle cx="31" cy="39" r="1.1" fill="#c8b0e0"/>
+      </svg>`,
+  },
+  {
+    id: 'cusk-eel',
+    name: 'Deep-sea Cusk-eel',
+    sci: 'Bassozetus',
+    depth: 2450,
+    range: '1,500–4,000 m',
+    size: 160,
+    fact: 'A soft, tapering fish whose fins merge into one long ribbon running around its body. Members of this family have been caught deeper than almost any other fish, right down into the ocean trenches.',
+    svg: `
+      <svg viewBox="0 0 210 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deep-sea cusk-eel">
+        <defs><linearGradient id="ck-b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a94a0"/><stop offset="1" stop-color="#4a525c"/></linearGradient></defs>
+        <path d="M14 44 Q34 32 52 40 Q120 36 184 48 Q194 52 186 58 Q120 56 52 54 Q34 60 14 52 Q8 48 14 44Z" fill="url(#ck-b)" stroke="#2c333a" stroke-width="1.6"/>
+        <path d="M52 34 Q120 30 186 48 Q120 60 52 58" fill="none" stroke="#6a7580" stroke-width="1.4" opacity="0.6"/>
+        <path d="M18 46 Q28 50 38 46" stroke="#2c333a" stroke-width="1.6" fill="none"/>
+        <circle cx="28" cy="42" r="3.6" fill="#0e131a"/><circle cx="29.2" cy="40.8" r="1.2" fill="#bfd0da"/>
+      </svg>`,
+  },
+  {
+    id: 'bathocyroe',
+    name: 'Comb Jelly',
+    sci: 'Bathocyroe fosteri',
+    depth: 2560,
+    range: '600–2,500 m',
+    size: 92,
+    fact: 'One of the most common jellies of the deep, it swims by beating eight rows of tiny hair-like combs. As they beat, they scatter light into shimmering, moving rainbows — even though the animal itself makes no colour.',
+    svg: `
+      <svg viewBox="0 0 110 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comb jelly">
+        <defs><radialGradient id="bc-b" cx="0.5" cy="0.45" r="0.55"><stop offset="0" stop-color="#cfe4ec" stop-opacity="0.55"/><stop offset="1" stop-color="#9ac0d0" stop-opacity="0.35"/></radialGradient></defs>
+        <path d="M55 12 Q86 20 84 62 Q82 92 55 104 Q28 92 26 62 Q24 20 55 12Z" fill="url(#bc-b)" stroke="#8fb8c8" stroke-width="1.6"/>
+        <path d="M55 12 Q40 40 40 104 M55 12 Q70 40 70 104" fill="none" stroke="#8fb8c8" stroke-width="1.4" opacity="0.6"/>
+        <g stroke-width="2.6" stroke-linecap="round" opacity="0.9">
+          <path d="M34 30 Q30 60 36 96" stroke="#ff8a5a"/><path d="M46 22 Q42 60 48 104" stroke="#ffd84a"/>
+          <path d="M64 22 Q68 60 62 104" stroke="#7aff8a"/><path d="M76 30 Q80 60 74 96" stroke="#6ad0ff"/>
+        </g>
+        <path d="M42 100 Q40 116 34 120 M68 100 Q70 116 76 120" stroke="#9ac0d0" stroke-width="1.4" fill="none" opacity="0.7"/>
+      </svg>`,
+  },
+  {
+    id: 'helmet-jelly',
+    name: 'Helmet Jellyfish',
+    sci: 'Periphylla periphylla',
+    depth: 2680,
+    range: '1,000–2,700 m',
+    size: 110,
+    fact: 'A deep-red, helmet-shaped jelly so sensitive to light that sunlight can be deadly to it — so it hides in the dark deep by day. When disturbed it flashes with blue-green bioluminescence.',
+    svg: `
+      <svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Helmet jellyfish">
+        <defs><linearGradient id="hj2-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8283a"/><stop offset="1" stop-color="#5c0c16"/></linearGradient></defs>
+        <path d="M55 8 Q80 12 82 48 Q84 74 70 82 Q55 86 40 82 Q26 74 28 48 Q30 12 55 8Z" fill="url(#hj2-b)" stroke="#3a060c" stroke-width="1.8"/>
+        <path d="M55 8 Q55 50 55 82 M40 14 Q42 50 46 80 M70 14 Q68 50 64 80" stroke="#8a1826" stroke-width="1.4" fill="none" opacity="0.7"/>
+        <g stroke="#d9455a" stroke-width="1.6" stroke-linecap="round" opacity="0.85"><path d="M34 80 L28 122"/><path d="M46 84 L44 126"/><path d="M55 85 L55 128"/><path d="M64 84 L66 126"/><path d="M76 80 L82 122"/></g>
+      </svg>`,
+  },
+  {
+    id: 'solmissus',
+    name: 'Dinnerplate Jelly',
+    sci: 'Solmissus',
+    depth: 2900,
+    range: '1,000–3,000 m',
+    size: 120,
+    fact: 'Nicknamed the "dinnerplate jelly," it cruises through the dark holding its tentacles stiffly out ahead like the spokes of a wheel — an unusual hunter that ambushes and eats other jellies.',
+    svg: `
+      <svg viewBox="0 0 150 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dinnerplate jelly">
+        <defs><radialGradient id="so-b" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e0d4ec" stop-opacity="0.55"/><stop offset="1" stop-color="#a898c8" stop-opacity="0.35"/></radialGradient></defs>
+        <ellipse cx="75" cy="58" rx="46" ry="30" fill="url(#so-b)" stroke="#8f7fb0" stroke-width="1.8"/>
+        <ellipse cx="75" cy="56" rx="26" ry="16" fill="none" stroke="#8f7fb0" stroke-width="1.3" opacity="0.7"/>
+        <g stroke="#a898c8" stroke-width="2.4" stroke-linecap="round">
+          <path d="M30 52 L4 46"/><path d="M32 62 L6 66"/><path d="M48 40 L42 16"/><path d="M62 36 L58 12"/><path d="M75 34 L75 10"/><path d="M88 36 L92 12"/><path d="M102 40 L108 16"/><path d="M118 52 L146 46"/><path d="M118 62 L144 66"/>
+        </g>
+      </svg>`,
+  },
+  {
+    id: 'bamboo-coral',
+    name: 'Bamboo Coral',
+    sci: 'Isididae',
+    depth: 3050,
+    range: '1,000–4,000 m',
+    size: 130,
+    fact: 'A deep-sea coral that grows in jointed segments like a stalk of bamboo and can live for thousands of years, laying down rings that record the ocean’s past — a slow-growing forest in the cold and dark.',
+    svg: `
+      <svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bamboo coral">
+        <defs><linearGradient id="bmc-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0e6d2"/><stop offset="1" stop-color="#c8a878"/></linearGradient></defs>
+        <g stroke="url(#bmc-b)" stroke-width="7" fill="none" stroke-linecap="round">
+          <path d="M60 146 L60 40"/><path d="M60 96 Q40 80 30 50"/><path d="M60 76 Q82 62 92 34"/><path d="M60 60 Q46 48 40 26"/>
+        </g>
+        <g fill="#8a6e48"><circle cx="60" cy="120" r="3.4"/><circle cx="60" cy="92" r="3.4"/><circle cx="60" cy="64" r="3.4"/><circle cx="42" cy="70" r="3"/><circle cx="80" cy="52" r="3"/></g>
+        <g fill="#fdfdfa" stroke="#c8a878" stroke-width="1"><circle cx="60" cy="40" r="5"/><circle cx="30" cy="50" r="4.5"/><circle cx="92" cy="34" r="4.5"/><circle cx="40" cy="26" r="4.5"/></g>
+      </svg>`,
+  },
+  {
+    id: 'harp-sponge',
+    name: 'Harp Sponge',
+    sci: 'Chondrocladia lyra',
+    depth: 3350,
+    range: '3,300–3,500 m',
+    size: 130,
+    fact: 'A carnivorous sponge shaped like a harp or candelabra. Instead of filtering water, its rows of upright branches are covered in tiny hooks that snag drifting shrimp, which it slowly wraps in membrane and digests.',
+    svg: `
+      <svg viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Harp sponge">
+        <defs><linearGradient id="hs3-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8ecf0"/><stop offset="1" stop-color="#a8bcc4"/></linearGradient></defs>
+        <path d="M20 108 Q75 96 130 108" stroke="#9fb4bc" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <g stroke="url(#hs3-b)" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M28 106 L26 30"/><path d="M52 105 L52 22"/><path d="M76 105 L78 18"/><path d="M100 105 L102 22"/><path d="M124 106 L126 30"/>
+        </g>
+        <g fill="#eef4f6" stroke="#a8bcc4" stroke-width="0.8"><circle cx="26" cy="30" r="4"/><circle cx="52" cy="22" r="4"/><circle cx="78" cy="18" r="4"/><circle cx="102" cy="22" r="4"/><circle cx="126" cy="30" r="4"/></g>
+        <g fill="#c8d6dc"><circle cx="27" cy="60" r="2"/><circle cx="52" cy="54" r="2"/><circle cx="77" cy="50" r="2"/><circle cx="101" cy="54" r="2"/><circle cx="125" cy="60" r="2"/></g>
+      </svg>`,
+  },
+  {
+    id: 'flabby-whalefish',
+    name: 'Flabby Whalefish',
+    sci: 'Cetomimidae',
+    depth: 3550,
+    range: '1,000–4,000 m',
+    size: 150,
+    fact: 'The loose-skinned, tiny-eyed female looks so unlike the big-eyed male and the larva that scientists once sorted the three into completely different families — until DNA revealed they are one fish at three life stages.',
+    svg: `
+      <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flabby whalefish">
+        <defs><linearGradient id="fw-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0703a"/><stop offset="1" stop-color="#a03c18"/></linearGradient></defs>
+        <path d="M12 46 Q24 32 44 40 Q120 34 172 46 Q188 50 180 58 Q120 66 44 58 Q22 62 12 52 Q8 49 12 46Z" fill="url(#fw-b)" stroke="#5e2010" stroke-width="1.8"/>
+        <path d="M12 46 Q26 44 40 44 Q40 40 26 42 Q16 42 12 46Z" fill="#c85828"/>
+        <path d="M120 38 Q132 26 146 40Z" fill="#c85828" stroke="#5e2010" stroke-width="1.2"/>
+        <path d="M40 48 Q34 54 40 58" stroke="#5e2010" stroke-width="1.8" fill="none"/>
+        <circle cx="30" cy="46" r="2.4" fill="#2a0e06"/>
+      </svg>`,
+  },
+  {
+    id: 'vent-shrimp',
+    name: 'Vent Shrimp',
+    sci: 'Rimicaris exoculata',
+    depth: 2250,
+    range: '2,000–2,600 m',
+    size: 100,
+    fact: 'Swarms in the thousands over scalding hydrothermal vents. It has no normal eyes — instead a light-sensing patch on its back "sees" the faint glow of the superheated water, keeping it close to the warmth without being cooked.',
+    svg: `
+      <svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vent shrimp">
+        <defs><linearGradient id="vsh-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eadfce"/><stop offset="1" stop-color="#c0ac8a"/></linearGradient></defs>
+        <path d="M120 30 Q136 22 138 28 M120 36 Q138 34 140 42" stroke="#8a7654" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M26 46 Q34 30 66 34 Q104 36 120 46 Q124 56 112 66 Q100 74 96 60 Q64 66 40 60 Q22 62 20 52 Q20 48 26 46Z" fill="url(#vsh-b)" stroke="#7e6a48" stroke-width="1.6"/>
+        <path d="M44 40 Q70 38 100 46 M40 52 Q70 54 96 56" stroke="#8a7654" stroke-width="1.1" fill="none" opacity="0.6"/>
+        <g stroke="#9a865e" stroke-width="2" stroke-linecap="round"><path d="M48 58 L44 78"/><path d="M62 60 L60 80"/><path d="M76 60 L78 80"/></g>
+        <ellipse cx="90" cy="42" rx="7" ry="4" fill="#ff8a5a" opacity="0.75"/>
+      </svg>`,
+  },
+  {
+    id: 'yeti-crab',
+    name: 'Yeti Crab',
+    sci: 'Kiwa hirsuta',
+    depth: 2200,
+    range: '2,200–2,600 m',
+    size: 120,
+    fact: 'A blind, pale crab discovered near hydrothermal vents, its arms covered in silky "fur." It farms bacteria on those hairs and waves its claws through the mineral-rich water to feed its living crop, then eats it.',
+    svg: `
+      <svg viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yeti crab">
+        <defs><radialGradient id="yc-b" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#f4efe6"/><stop offset="1" stop-color="#d0c6b4"/></radialGradient></defs>
+        <g stroke="#b8ac96" stroke-width="3" stroke-linecap="round" fill="none"><path d="M56 68 L28 88 M58 76 L30 100 M92 68 L120 88 M90 76 L118 100"/></g>
+        <path d="M40 44 Q20 40 12 54 Q26 58 40 56 Q30 66 34 78 Q46 70 48 58Z" fill="url(#yc-b)" stroke="#a89a80" stroke-width="1.6"/>
+        <path d="M110 44 Q130 40 138 54 Q124 58 110 56 Q120 66 116 78 Q104 70 102 58Z" fill="url(#yc-b)" stroke="#a89a80" stroke-width="1.6"/>
+        <g stroke="#e0d8c8" stroke-width="1.2" opacity="0.8"><path d="M20 48 L14 44 M26 52 L22 46 M124 48 L130 44 M118 52 L122 46"/></g>
+        <ellipse cx="75" cy="66" rx="30" ry="26" fill="url(#yc-b)" stroke="#a89a80" stroke-width="2"/>
+        <path d="M62 56 Q60 50 64 46 M88 56 Q90 50 86 46" stroke="#b8ac96" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>`,
+  },
+
+  // Abyssal
+  {
+    id: 'faceless-cusk',
+    name: 'Faceless Cusk',
+    sci: 'Typhlonus nasus',
+    depth: 4100,
+    range: '3,900–5,000 m',
+    size: 150,
+    fact: 'Rediscovered off Australia in 2017 after more than a century, it has no visible eyes and a mouth tucked underneath, so head-on it appears to have no face at all — just smooth, pale skin.',
+    svg: `
+      <svg viewBox="0 0 190 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Faceless cusk">
+        <defs><linearGradient id="fc-b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c8bcae"/><stop offset="1" stop-color="#8f8072"/></linearGradient></defs>
+        <path d="M16 44 Q30 26 58 34 Q120 30 174 46 Q184 52 174 58 Q120 62 58 56 Q30 62 16 48 Q10 46 16 44Z" fill="url(#fc-b)" stroke="#6a5e50" stroke-width="1.8"/>
+        <path d="M20 46 Q30 56 46 54 Q34 50 26 44Z" fill="#a89a88" opacity="0.7"/>
+        <path d="M58 34 Q120 32 172 46 Q120 60 58 56" fill="none" stroke="#a89a88" stroke-width="1.2" opacity="0.6"/>
+      </svg>`,
+  },
+  {
+    id: 'gummy-squirrel',
+    name: 'Gummy Squirrel',
+    sci: 'Psychropotes longicauda',
+    depth: 4250,
+    range: '4,000–6,000 m',
+    size: 130,
+    fact: 'A big yellow sea cucumber with a "sail" on its back and a long upright tail, it plods across the abyssal plain slurping up the freshest, most nutritious mud off the very top of the seabed.',
+    svg: `
+      <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gummy squirrel sea cucumber">
+        <defs><linearGradient id="gsq2-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2d452"/><stop offset="1" stop-color="#c69a28"/></linearGradient></defs>
+        <path d="M22 72 Q28 52 60 50 Q108 48 128 62 Q136 72 124 80 Q80 90 46 84 Q24 84 22 72Z" fill="url(#gsq2-b)" stroke="#8a6a14" stroke-width="2"/>
+        <path d="M124 62 Q150 40 148 22 Q134 34 126 56Z" fill="#e8c840" stroke="#8a6a14" stroke-width="1.6"/>
+        <path d="M46 50 Q52 32 62 30 Q60 44 58 52 M72 48 Q78 30 88 30 Q84 44 82 52" fill="none" stroke="#d8b830" stroke-width="3" stroke-linecap="round"/>
+        <g stroke="#a67e1c" stroke-width="3" stroke-linecap="round"><path d="M40 84 L36 98"/><path d="M62 86 L60 100"/><path d="M86 84 L88 98"/><path d="M108 80 L112 94"/></g>
+        <circle cx="34" cy="66" r="2.6" fill="#5c4410"/>
+      </svg>`,
+  },
+  {
+    id: 'basket-star',
+    name: 'Basket Star',
+    sci: 'Gorgonocephalus',
+    depth: 4400,
+    range: '100–4,500 m',
+    size: 130,
+    fact: 'A relative of the brittle star whose five arms fork again and again into a living net of thousands of curling tips. At night it raises the whole basket into the current to snare drifting plankton.',
+    svg: `
+      <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Basket star">
+        <defs><radialGradient id="bs3-b" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e0b088"/><stop offset="1" stop-color="#a8764c"/></radialGradient></defs>
+        <g stroke="#8a5e38" stroke-width="2.4" fill="none" stroke-linecap="round">
+          <path d="M75 66 Q70 40 60 20 Q64 34 68 50 M60 20 Q52 30 46 24 M60 20 Q66 26 72 22"/>
+          <path d="M78 66 Q100 48 124 34 Q108 44 92 56 M124 34 Q126 24 132 26 M124 34 Q120 42 128 44"/>
+          <path d="M80 72 Q104 84 126 112 Q110 92 92 78 M126 112 Q134 112 132 120 M126 112 Q118 116 122 122"/>
+          <path d="M70 74 Q52 96 30 118 Q48 96 64 80 M30 118 Q22 116 24 124 M30 118 Q38 118 34 124"/>
+          <path d="M68 68 Q42 58 18 46 Q38 58 58 66 M18 46 Q14 38 8 42 M18 46 Q24 50 20 54"/>
+        </g>
+        <circle cx="74" cy="70" r="12" fill="url(#bs3-b)" stroke="#8a5e38" stroke-width="1.8"/>
+        <path d="M68 64 L74 70 L80 64 M68 76 L74 70 L80 76" stroke="#6e4826" stroke-width="1.2" fill="none"/>
+      </svg>`,
+  },
+  {
+    id: 'relicanthus',
+    name: 'Giant Anemone',
+    sci: 'Relicanthus daphneae',
+    depth: 4600,
+    range: '~4,000 m',
+    size: 120,
+    fact: 'An anemone-like giant with tentacles up to 2 metres long. It anchors to the little dark manganese nodules scattered across the abyssal plain — potato-sized lumps that take millions of years to grow one layer.',
+    svg: `
+      <svg viewBox="0 0 130 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Giant anemone">
+        <defs><linearGradient id="re-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8a0b8"/><stop offset="1" stop-color="#8a5e78"/></linearGradient></defs>
+        <ellipse cx="65" cy="132" rx="34" ry="12" fill="#3a3038" stroke="#241c22" stroke-width="1.6"/>
+        <path d="M50 128 Q48 96 52 76 Q60 66 78 68 Q84 90 82 128Z" fill="url(#re-b)" stroke="#5e3a50" stroke-width="1.6"/>
+        <g stroke="#d8a8c8" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M56 74 Q40 48 22 28"/><path d="M60 70 Q50 42 42 14"/><path d="M65 68 Q65 40 65 10"/><path d="M70 70 Q80 42 88 14"/><path d="M74 74 Q92 48 108 28"/>
+          <path d="M52 78 Q30 62 12 52"/><path d="M78 78 Q100 62 118 52"/>
+        </g>
+      </svg>`,
+  },
+  {
+    id: 'benthocodon',
+    name: 'Red Bottom Jelly',
+    sci: 'Benthocodon',
+    depth: 4750,
+    range: '4,000–5,000 m',
+    size: 100,
+    fact: 'Unusual for a jelly, its bell is a solid, opaque blood-red instead of clear — thought to mask the glow of the bioluminescent food it swallows, so predators can’t spot the light through its stomach.',
+    svg: `
+      <svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Red bottom jelly">
+        <defs><radialGradient id="be2-b" cx="0.5" cy="0.4" r="0.6"><stop offset="0" stop-color="#c83040"/><stop offset="1" stop-color="#761018"/></radialGradient></defs>
+        <path d="M22 50 Q22 22 60 20 Q98 22 98 50 Q98 62 84 64 Q60 68 36 64 Q22 62 22 50Z" fill="url(#be2-b)" stroke="#4c0a10" stroke-width="1.8"/>
+        <ellipse cx="60" cy="48" rx="24" ry="14" fill="#a82030" opacity="0.6"/>
+        <g stroke="#8a1420" stroke-width="1.6" stroke-linecap="round" opacity="0.85">
+          <path d="M28 62 L24 92"/><path d="M38 66 L36 96"/><path d="M48 67 L48 98"/><path d="M60 68 L60 100"/><path d="M72 67 L72 98"/><path d="M82 66 L84 96"/><path d="M92 62 L96 92"/>
+        </g>
+      </svg>`,
+  },
+  {
+    id: 'munnopsid',
+    name: 'Long-legged Isopod',
+    sci: 'Munnopsidae',
+    depth: 4900,
+    range: '1,000–5,000 m',
+    size: 110,
+    fact: 'A spidery deep-sea cousin of the pill-bug that leads a double life: it swims upside-down through the water with paddle-shaped legs, then flips over to stalk across the mud on long, stilt-like limbs.',
+    svg: `
+      <svg viewBox="0 0 150 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Long-legged isopod">
+        <defs><linearGradient id="mu-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8c8a8"/><stop offset="1" stop-color="#a08858"/></linearGradient></defs>
+        <g stroke="#7e6a44" stroke-width="2.4" stroke-linecap="round" fill="none">
+          <path d="M58 54 Q34 40 12 22"/><path d="M60 60 Q36 58 10 54"/><path d="M60 66 Q36 76 12 92"/>
+          <path d="M92 54 Q116 40 138 22"/><path d="M90 60 Q114 58 140 54"/><path d="M90 66 Q114 76 138 92"/>
+        </g>
+        <ellipse cx="75" cy="60" rx="22" ry="16" fill="url(#mu-b)" stroke="#6e5a38" stroke-width="1.8"/>
+        <ellipse cx="75" cy="44" rx="12" ry="9" fill="#c0a878" stroke="#6e5a38" stroke-width="1.4"/>
+        <circle cx="69" cy="42" r="2.4" fill="#3a2c14"/><circle cx="81" cy="42" r="2.4" fill="#3a2c14"/>
+      </svg>`,
+  },
+  {
+    id: 'cirrate-octopus',
+    name: 'Blind Octopus',
+    sci: 'Cirrothauma murrayi',
+    depth: 5050,
+    range: '1,500–5,000 m',
+    size: 120,
+    fact: 'One of the only truly blind octopuses. Living in absolute darkness, it has given up working eyes altogether and drifts on two large fins like a gelatinous parachute, feeling for food with webbed arms.',
+    svg: `
+      <svg viewBox="0 0 140 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blind octopus">
+        <defs><radialGradient id="ci-b" cx="0.5" cy="0.35" r="0.7"><stop offset="0" stop-color="#c887a0"/><stop offset="1" stop-color="#8a4e68"/></radialGradient></defs>
+        <path d="M30 44 Q6 32 10 56 Q16 72 40 62Z" fill="#b06a86" stroke="#6e3450" stroke-width="1.6"/>
+        <path d="M110 44 Q134 32 130 56 Q124 72 100 62Z" fill="#b06a86" stroke="#6e3450" stroke-width="1.6"/>
+        <path d="M70 22 Q106 26 106 58 Q106 78 88 84 Q92 100 84 112 Q76 100 74 88 Q70 96 66 88 Q64 100 56 112 Q48 100 52 84 Q34 78 34 58 Q34 26 70 22Z" fill="url(#ci-b)" stroke="#6e3450" stroke-width="1.8"/>
+        <path d="M74 88 Q80 100 92 92 M66 88 Q60 100 48 92" fill="#9c5878" opacity="0.6"/>
+      </svg>`,
+  },
+  {
+    id: 'brisingid',
+    name: 'Deep-sea Sea Star',
+    sci: 'Brisingida',
+    depth: 5250,
+    range: '2,000–6,000 m',
+    size: 130,
+    fact: 'Unlike the starfish of shallow reefs, it doesn’t crawl after food. It perches on rocks with many long, spiny arms held up into the current, catching drifting particles on thousands of tiny pincers.',
+    svg: `
+      <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deep-sea sea star">
+        <defs><radialGradient id="br-b" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e0705a"/><stop offset="1" stop-color="#a83a2e"/></radialGradient></defs>
+        <g stroke="#8a2c22" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M75 66 L64 8"/><path d="M75 66 L110 14"/><path d="M78 70 L138 46"/><path d="M80 74 L134 104"/><path d="M78 78 L104 138"/><path d="M72 78 L58 140"/><path d="M70 74 L16 106"/><path d="M70 70 L10 50"/><path d="M72 66 L36 12"/>
+        </g>
+        <g stroke="#c85040" stroke-width="1.4" opacity="0.7"><path d="M64 8 l-6 4 M110 14 l4 6 M138 46 l4 -5 M134 104 l6 3 M104 138 l-5 5 M58 140 l5 4 M16 106 l-6 3 M10 50 l-5 -4 M36 12 l4 -6"/></g>
+        <circle cx="75" cy="72" r="13" fill="url(#br-b)" stroke="#8a2c22" stroke-width="1.8"/>
+      </svg>`,
+  },
+  {
+    id: 'graneledone',
+    name: 'Deep-sea Octopus',
+    sci: 'Graneledone',
+    depth: 5450,
+    range: '1,000–5,000 m',
+    size: 120,
+    fact: 'A warty, pale-purple octopus of the cold deep. A female of a close relative was watched guarding her eggs on a rocky ledge for four and a half years — the longest brooding of any known animal.',
+    svg: `
+      <svg viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deep-sea octopus">
+        <defs><radialGradient id="gra-b" cx="0.5" cy="0.35" r="0.7"><stop offset="0" stop-color="#a888c0"/><stop offset="1" stop-color="#6e4e88"/></radialGradient></defs>
+        <path d="M70 14 Q108 20 108 54 Q108 72 92 78 Q98 96 90 110 Q82 98 80 84 Q74 94 70 84 Q66 94 60 84 Q58 98 50 110 Q42 96 48 78 Q32 72 32 54 Q32 20 70 14Z" fill="url(#gra-b)" stroke="#4a3060" stroke-width="1.8"/>
+        <g fill="#8a6aa8" opacity="0.7"><circle cx="56" cy="40" r="3"/><circle cx="72" cy="34" r="3"/><circle cx="86" cy="46" r="3"/><circle cx="64" cy="54" r="3"/><circle cx="84" cy="60" r="3"/></g>
+        <circle cx="56" cy="52" r="5.5" fill="#2a1a3a"/><circle cx="57.4" cy="50.4" r="1.6" fill="#d8c0e8"/>
+        <circle cx="84" cy="52" r="5.5" fill="#2a1a3a"/><circle cx="85.4" cy="50.4" r="1.6" fill="#d8c0e8"/>
+      </svg>`,
+  },
+  {
+    id: 'alicella',
+    name: 'Supergiant Amphipod',
+    sci: 'Alicella gigantea',
+    depth: 5600,
+    range: '3,000–7,000 m',
+    size: 110,
+    fact: 'The largest amphipod ever found, reaching 34 cm — a true "supergiant" among cousins usually smaller than a grain of rice. It roams the deep scavenging carcasses, growing huge where food is rare but competition is rarer.',
+    svg: `
+      <svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Supergiant amphipod">
+        <defs><linearGradient id="al-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eadfc8"/><stop offset="1" stop-color="#b8a074"/></linearGradient></defs>
+        <path d="M124 30 Q142 20 148 26 M124 36 Q144 32 150 40" stroke="#7e6a44" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M24 46 Q34 26 68 30 Q112 32 126 44 Q130 58 116 70 Q104 80 98 64 Q64 70 38 62 Q18 62 20 50 Q20 47 24 46Z" fill="url(#al-b)" stroke="#7c6844" stroke-width="1.8"/>
+        <path d="M40 40 Q70 38 104 46 M36 52 Q70 54 100 58 M34 60 Q64 64 96 66" stroke="#7c6844" stroke-width="1.1" fill="none" opacity="0.6"/>
+        <g stroke="#8e7a52" stroke-width="2.4" stroke-linecap="round"><path d="M46 62 L40 84"/><path d="M62 64 L58 88"/><path d="M78 64 L78 90"/><path d="M94 62 L98 86"/></g>
+        <circle cx="112" cy="46" r="3.6" fill="#3c2e18"/>
+      </svg>`,
+  },
+
+  // Hadal
+  {
+    id: 'peniagone',
+    name: 'Swimming Sea Cucumber',
+    sci: 'Peniagone',
+    depth: 6300,
+    range: '5,000–9,500 m',
+    size: 110,
+    side: 'left',
+    fact: 'Many of the deepest sea cucumbers can swim — this one pushes off the mud and undulates a fleshy veil to rise and drift, letting it flee disturbances and ride weak currents to the next patch of food.',
+    svg: `
+      <svg viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Swimming sea cucumber">
+        <defs><radialGradient id="pe-b" cx="0.5" cy="0.45" r="0.6"><stop offset="0" stop-color="#e8b8c4" stop-opacity="0.9"/><stop offset="1" stop-color="#b87688" stop-opacity="0.8"/></radialGradient></defs>
+        <path d="M28 60 Q28 38 62 36 Q108 34 122 52 Q128 66 114 74 Q78 84 50 78 Q28 76 28 60Z" fill="url(#pe-b)" stroke="#8a4e5e" stroke-width="1.8"/>
+        <path d="M62 36 Q70 16 92 22 Q112 30 118 48 Q90 40 62 46Z" fill="#f0c6d0" stroke="#8a4e5e" stroke-width="1.4" opacity="0.85"/>
+        <path d="M40 62 Q64 58 100 66" stroke="#a03a52" stroke-width="2.6" fill="none" opacity="0.6"/>
+        <g stroke="#c07a8c" stroke-width="2.4" stroke-linecap="round"><path d="M44 76 L40 92"/><path d="M66 78 L64 94"/><path d="M92 74 L94 90"/></g>
+      </svg>`,
+  },
+  {
+    id: 'kermadec-snailfish',
+    name: 'Kermadec Snailfish',
+    sci: 'Notoliparis kermadecensis',
+    depth: 7000,
+    range: '6,000–7,500 m',
+    size: 120,
+    side: 'right',
+    fact: 'The snailfish of the Kermadec Trench near New Zealand — a whole different trench from the Mariana, yet home to its own pale, jelly-bodied snailfish. Across the world’s deepest trenches, it is snailfish that rule.',
+    svg: `
+      <svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kermadec snailfish">
+        <defs><linearGradient id="ks-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8dbe0" stop-opacity="0.95"/><stop offset="1" stop-color="#c0aab4" stop-opacity="0.82"/></linearGradient></defs>
+        <path d="M22 46 Q38 32 62 36 Q122 32 150 54 Q152 60 144 64 Q120 76 62 64 Q32 68 20 60 Q12 52 22 46Z" fill="url(#ks-b)" stroke="#9a8490" stroke-width="1.8"/>
+        <path d="M98 36 Q122 26 140 38 Q122 44 102 44Z" fill="#ddccd4" stroke="#9a8490" stroke-width="1.2" opacity="0.85"/>
+        <path d="M98 62 Q120 74 138 64 Q120 58 102 58Z" fill="#ddccd4" stroke="#9a8490" stroke-width="1.2" opacity="0.8"/>
+        <path d="M20 54 Q36 52 46 54" stroke="#ac96a2" stroke-width="1.4" fill="none"/>
+        <circle cx="40" cy="48" r="3.4" fill="#5a4650"/><circle cx="41" cy="46.8" r="1.1" fill="#fff" opacity="0.85"/>
+      </svg>`,
+  },
+  {
+    id: 'benthesicymus',
+    name: 'Deep-sea Shrimp',
+    sci: 'Benthesicymus',
+    depth: 7600,
+    range: '4,000–8,000 m',
+    size: 120,
+    side: 'left',
+    fact: 'A red-shelled shrimp that scavenges among the deepest trenches. Red is the first colour to vanish in the deep, so in the lightless water its bright shell actually reads as invisible black — perfect camouflage.',
+    svg: `
+      <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deep-sea shrimp">
+        <defs><linearGradient id="bth-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8564e"/><stop offset="1" stop-color="#9c2c26"/></linearGradient></defs>
+        <path d="M124 22 Q150 10 156 16 M124 28 Q152 22 158 32 M124 34 Q150 34 156 44" stroke="#7a2420" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M28 52 Q38 30 72 34 Q114 36 128 50 Q132 66 116 78 Q100 88 96 70 Q60 76 40 66 Q20 66 22 54 Q22 50 28 52Z" fill="url(#bth-b)" stroke="#6a1a16" stroke-width="1.8"/>
+        <path d="M42 46 Q72 44 106 52 M38 58 Q70 60 100 62" stroke="#7a2420" stroke-width="1.1" fill="none" opacity="0.6"/>
+        <g stroke="#b83c34" stroke-width="2.2" stroke-linecap="round"><path d="M46 66 L40 88"/><path d="M60 68 L56 90"/><path d="M74 68 L74 92"/><path d="M88 66 L92 88"/></g>
+        <path d="M100 70 Q108 84 118 88" stroke="#c04038" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <circle cx="112" cy="44" r="3.6" fill="#3c100c"/>
+      </svg>`,
+  },
+  {
+    id: 'scale-worm',
+    name: 'Hadal Scale Worm',
+    sci: 'Polynoidae',
+    depth: 8200,
+    range: '6,000–8,500 m',
+    size: 100,
+    side: 'right',
+    fact: 'Armoured along its back with overlapping plates like roof tiles and fringed with stiff bristles, this bristle worm hunts and scavenges on the trench floor — among the deepest predators known on Earth.',
+    svg: `
+      <svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hadal scale worm">
+        <defs><linearGradient id="scw-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8a878"/><stop offset="1" stop-color="#8a6a44"/></linearGradient></defs>
+        <path d="M18 46 Q30 36 48 40 Q100 36 140 46 Q148 50 140 54 Q100 58 48 54 Q30 58 18 50 Q12 48 18 46Z" fill="#7a6042" stroke="#4e3c24" stroke-width="1.4"/>
+        <g fill="url(#scw-b)" stroke="#5e4a2c" stroke-width="1.2">
+          <ellipse cx="42" cy="42" rx="12" ry="9"/><ellipse cx="62" cy="41" rx="12" ry="9"/><ellipse cx="82" cy="41" rx="12" ry="9"/><ellipse cx="102" cy="42" rx="12" ry="9"/><ellipse cx="122" cy="44" rx="11" ry="8"/>
+        </g>
+        <g stroke="#9a825a" stroke-width="1.4" stroke-linecap="round" opacity="0.8"><path d="M42 50 L40 62 M62 50 L62 64 M82 50 L82 64 M102 50 L104 62 M122 50 L126 60 M42 34 L40 24 M62 33 L62 22 M82 33 L82 22 M102 34 L104 24"/></g>
+        <path d="M18 44 Q10 40 4 42 M18 50 Q10 54 4 52" stroke="#7a6042" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <circle cx="26" cy="44" r="2.4" fill="#2e2214"/>
       </svg>`,
   },
 ];

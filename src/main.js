@@ -11,6 +11,14 @@ import {
 } from './ocean.js';
 import { CREATURES } from './data/creatures.js';
 
+// Order the whole roster by depth and assign strictly alternating sides, so
+// the dataset can list species in any order and neighbouring cards never land
+// on the same side. Both the scroll world and the Dive Line render from this.
+const ROSTER = [...CREATURES].sort((a, b) => a.depth - b.depth);
+ROSTER.forEach((c, i) => {
+  c.side = i % 2 === 0 ? 'right' : 'left';
+});
+
 const ocean = document.getElementById('ocean');
 const root = document.documentElement;
 
@@ -76,7 +84,7 @@ const revealObserver = new IntersectionObserver(
   { rootMargin: '0px 0px -12% 0px' }
 );
 
-for (const c of CREATURES) {
+for (const c of ROSTER) {
   const el = document.createElement('article');
   el.className = c.depth >= 1000 ? 'creature deep' : 'creature';
   el.dataset.side = c.side;
@@ -222,7 +230,7 @@ document.body.appendChild(divemap);
 
 const track = divemap.querySelector('.divemap-track');
 let mapZone = null;
-for (const c of CREATURES) {
+for (const c of ROSTER) {
   const z = zoneAt(c.depth);
   if (z.name !== mapZone) {
     mapZone = z.name;

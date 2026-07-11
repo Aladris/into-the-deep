@@ -1,7 +1,7 @@
 // The scientific backbone: zones, water color by depth, light physics.
 
 export const MAX_DEPTH = 10935; // metres — floor of the Mariana Trench (Challenger Deep)
-export const PX_PER_M = 5;      // scroll scale: 5 px of page per metre of ocean
+export const PX_PER_M = 6;      // scroll scale: 6 px of page per metre of ocean
 
 export const ZONES = [
   { name: 'Sunlight', sci: 'Epipelagic',    from: 0,    to: 200,   light: 'Full sunlight' },
