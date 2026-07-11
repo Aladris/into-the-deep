@@ -10,6 +10,7 @@ import {
   pressureAt,
 } from './ocean.js';
 import { CREATURES } from './data/creatures.js';
+import { initQuiz } from './quiz.js';
 
 // Order the whole roster by depth and assign strictly alternating sides, so
 // the dataset can list species in any order and neighbouring cards never land
@@ -374,6 +375,9 @@ window.addEventListener(
 window.addEventListener('resize', update, { passive: true });
 
 update();
+
+// Gamification: the creature quiz
+initQuiz();
 
 // Offline support — only in the built app, so the dev server keeps HMR
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
